@@ -1,0 +1,23 @@
+{
+  "name": "client-for-a-server-template",
+  "version": "0.0.1",
+  "description": "client for a server template",
+  "main": "./src/entry.js",
+  "scripts": {
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --progress --colors --port 9999",
+    "build": "./node_modules/webpack-dev-server/bin/webpack.js --build --config webpack.config.js --progress --colors"
+  },
+  "author": "Reslav Hollos",
+  "devDependencies": {
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.8.11",
+    "webpack-dev-server": "^1.8.2",
+    "flowcheck": "^0.2.7",
+    "flowcheck-loader": "^1.0.0"
+  },
+  "dependencies": {
+    "babel": "^5.8.23",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
+  }
+}
