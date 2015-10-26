@@ -2,6 +2,8 @@ var React = require('react')
 var Router = require('react-router')
   , { Route, DefaultRoute, RouteHandler, Navigation } = Router
 
+var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
+
 var App = React.createClass({
   handleChange: function(name, e) {
     var chg = {}
@@ -9,7 +11,7 @@ var App = React.createClass({
     this.setState(chg)
   }
 , componentDidMount: function() {
-    document.body.style.backgroundColor = '#C7D1CE'
+    document.body.style.backgroundColor = '#F7F1FE'
   }
 , render: function() {
     var self = this
@@ -21,6 +23,8 @@ var App = React.createClass({
 
           <h3>Name of the project</h3>
 
+          <MyLink name='react-speed-reader'>React Speed Reader</MyLink>
+
           <hr/>
         </div>
 
@@ -31,9 +35,24 @@ var App = React.createClass({
   }
 })
 
+var MyLink = React.createClass({
+  mixins: [ Navigation ]
+, handleClick: function() {
+    this.replaceWith(this.props.name, this.props.params)
+  }
+, render: function() {
+    return (
+      <span onClick={this.handleClick}>{this.props.children}</span>
+    )
+  }
+})
+// this.replaceWith('/users', { userId: user.id }, query)
+
 //    <DefaultRoute name="demo" handler={Demo}/>
 var routes = (
   <Route name="app" path="/" handler={App}>
+    <Route name="react-speed-reader" path="/react-speed-reader" handler={SpeedReaderViewer} />
+
   </Route>
 )
 
