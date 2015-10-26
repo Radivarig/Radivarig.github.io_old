@@ -17,8 +17,11 @@ var App = React.createClass({
           repoName: 'react-speed-reader'
         , displayName: 'React Speed Reader'
         }
+      , {
+          repoName: 'react-popups'
+        , displayName: 'React Popups'
+        }
       ]
-    , activeTab: 0
     }
   }
 , componentDidMount: function() {
@@ -26,15 +29,35 @@ var App = React.createClass({
   }
 , render: function() {
     var self = this
+
+//    var tabStyle = {}
+    var urlHash = location.href.split('#')[1]
+    var activeTab = 0
+    var Tabs = this.state.tabs.map(function(x, i) {
+      var isActive = false
+      if (urlHash == '/' +x.repoName) {
+        activeTab = i
+        isActive = true
+      }
+      var handleClick = function() {}
+      return (
+        <MyLink onClick={handleClick}
+                name={x.repoName}
+                key={i}
+                isActive={isActive}
+                >
+          {x.displayName}
+        </MyLink>
+      )
+    })
+
     return (
       <div>
         <div style={{textAlign: 'center'}}>
 
           <hr/>
-
-          <h3>{this.state.tabs[this.state.activeTab].displayName}</h3>
-
-          <MyLink name='react-speed-reader'>React Speed Reader</MyLink>
+          <div>{Tabs}</div>
+          <h3>{this.state.tabs[activeTab].displayName}</h3>
 
           <hr/>
         </div>
@@ -53,7 +76,11 @@ var MyLink = React.createClass({
   }
 , render: function() {
     return (
-      <span onClick={this.handleClick}>{this.props.children}</span>
+      <button disabled={this.props.isActive}
+              onClick={this.handleClick}
+              >
+        {this.props.children}
+      </button>
     )
   }
 })
