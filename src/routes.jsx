@@ -10,6 +10,17 @@ var App = React.createClass({
     chg[name] = e.target ? e.target.value : e
     this.setState(chg)
   }
+, getInitialState: function() {
+    return {
+      tabs: [
+        {
+          repoName: 'react-speed-reader'
+        , displayName: 'React Speed Reader'
+        }
+      ]
+    , activeTab: 0
+    }
+  }
 , componentDidMount: function() {
     document.body.style.backgroundColor = '#F7F1FE'
   }
@@ -21,7 +32,7 @@ var App = React.createClass({
 
           <hr/>
 
-          <h3>Name of the project</h3>
+          <h3>{this.state.tabs[this.state.activeTab].displayName}</h3>
 
           <MyLink name='react-speed-reader'>React Speed Reader</MyLink>
 
