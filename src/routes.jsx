@@ -1,8 +1,10 @@
 var React = require('react')
 var Router = require('react-router')
-  , { Route, DefaultRoute, RouteHandler, Navigation } = Router
+  , { Route, DefaultRoute, History } = Router
 
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
+var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
+
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
 var TwitterFollowButton = require('./Components/TwitterFollowButton.jsx')
@@ -78,7 +80,7 @@ var App = React.createClass({
           <hr/>
         </div>
 
-        <RouteHandler/>
+        {self.props.children}
 
       </div>
     )
@@ -86,9 +88,10 @@ var App = React.createClass({
 })
 
 var MyLink = React.createClass({
-  mixins: [ Navigation ]
+  mixins: [ History ]
 , handleClick: function() {
-    this.replaceWith(this.props.name, this.props.params)
+    //this.history.pushState(null, `/users/${user.id}`, query);
+    this.history.replaceState(null, `/${this.props.name}`)
   }
 , render: function() {
     return (
@@ -102,10 +105,11 @@ var MyLink = React.createClass({
 })
 // this.replaceWith('/users', { userId: user.id }, query)
 
-//    <DefaultRoute name="demo" handler={Demo}/>
+//    <DefaultRoute component={Demo}/>
 var routes = (
-  <Route name="app" path="/" handler={App}>
-    <Route name="react-speed-reader" path="/react-speed-reader" handler={SpeedReaderViewer} />
+  <Route path="/" component={App}>
+    <Route path="/react-speed-reader" component={SpeedReaderViewer} />
+    <Route path="/react-popups" component={PopupsViewer} />
 
   </Route>
 )

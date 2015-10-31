@@ -1,6 +1,6 @@
-[submodule "react-speed-reader"]
-	path = react-speed-reader
-	url = https://github.com/Radivarig/react-speed-reader.git
 [submodule "react-popups"]
 	path = react-popups
 	url = https://github.com/Radivarig/react-popups.git
+[submodule "react-speed-reader"]
+	path = react-speed-reader
+	url = https://github.com/Radivarig/react-speed-reader.git
