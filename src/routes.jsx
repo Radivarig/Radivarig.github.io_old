@@ -3,6 +3,9 @@ var Router = require('react-router')
   , { Route, DefaultRoute, RouteHandler, Navigation } = Router
 
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
+var GithubRibbon = require('./Components/GithubRibbon.jsx')
+var GithubButton = require('./Components/GithubButton.jsx')
+var TwitterFollowButton = require('./Components/TwitterFollowButton.jsx')
 
 var App = React.createClass({
   handleChange: function(name, e) {
@@ -53,11 +56,24 @@ var App = React.createClass({
 
     return (
       <div>
+        <GithubRibbon gitHref={'Radivarig/' +this.state.tabs[activeTab].repoName} />
+
         <div style={{textAlign: 'center'}}>
 
-          <hr/>
           <div>{Tabs}</div>
-          <h3>{this.state.tabs[activeTab].displayName}</h3>
+          <hr/>
+          <TwitterFollowButton user='Radivarig' showCount={true} />
+          <h3>
+            {this.state.tabs[activeTab].displayName}
+            <span style={{position: 'absolute', transform: 'translate(75%)'}}>
+              <GithubButton
+                user='Radivarig'
+                repo={this.state.tabs[activeTab].repoName}
+                type={'star'}
+                showCount={true}
+                />
+            </span>
+          </h3>
 
           <hr/>
         </div>
