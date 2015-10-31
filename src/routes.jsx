@@ -71,6 +71,7 @@ var App = React.createClass({
               <GithubButton
                 user='Radivarig'
                 repo={this.state.tabs[activeTab].repoName}
+                key={this.state.tabs[activeTab].repoName}
                 type={'star'}
                 showCount={true}
                 />
