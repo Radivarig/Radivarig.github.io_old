@@ -49,6 +49,14 @@ var App = React.createClass({
             { name: 'CGCookie', link: 'https://cgcookiemarkets.com/all-products/uv-squares/' }
           ]
         }
+      , {
+          repoName: 'Edger'
+        , displayName: 'Blender Edger'
+        , links:  [
+            { name: 'BlenderArtists', link: 'http://blenderartists.org/forum/showthread.php?358615'}
+          ]
+        }
+
       ]
     }
   }
@@ -146,12 +154,16 @@ var CommentCollapserViewer = React.createClass({ render: function() {
 var UvSquaresViewer = React.createClass({ render: function() {
   return <SimpleYoutube url={'https://www.youtube.com/watch?v=VYZnGIql2UI'} />}})
 
+var EdgerViewer = React.createClass({ render: function() {
+  return <SimpleYoutube url={'https://www.youtube.com/watch?v=ToHbROhUrEc'} />}})
+
 var routes = (
   <Route path="/" component={App}>
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
     <Route path="/UvSquares" component={UvSquaresViewer} />
+    <Route path="/Edger" component={EdgerViewer} />
 
   </Route>
 )
