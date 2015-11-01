@@ -12,11 +12,13 @@ var SimpleYoutube = React.createClass({
     }
 
     return (
-      <YouTube
-        url={this.props.url}
-        opts={opts}
-        onReady={this._onReady}
-      />
+      <div style={{textAlign: 'center'}}>
+        <YouTube
+          url={this.props.url}
+          opts={opts}
+          onReady={this._onReady}
+        />
+      </div>
     )
   }
 })
