@@ -70,7 +70,6 @@ var App = React.createClass({
     var urlHash = location.href.split('#')[1]
     var activeTab = -1
     var Tabs = this.state.tabs.map(function(x, i) {
-      if (i === 0) return
       var isActive = false
       if (urlHash == '/' +x.repoName) {
         activeTab = i
