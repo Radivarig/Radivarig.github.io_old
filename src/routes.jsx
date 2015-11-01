@@ -11,6 +11,8 @@ var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
 var TwitterFollowButton = require('./Components/TwitterFollowButton.jsx')
 
+var SimpleYoutube = require('./Components/SimpleYoutube.jsx')
+
 var App = React.createClass({
   handleChange: function(name, e) {
     var chg = {}
