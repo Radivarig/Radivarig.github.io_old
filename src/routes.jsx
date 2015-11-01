@@ -21,10 +21,16 @@ var App = React.createClass({
         {
           repoName: 'react-speed-reader'
         , displayName: 'React Speed Reader'
+        , links:  [
+            { name: 'npm', link: 'https://www.npmjs.com/package/react-speed-reader' }
+          ]
         }
       , {
           repoName: 'react-popups'
         , displayName: 'React Popups'
+        , links:  [
+            { name: 'npm', link: 'https://www.npmjs.com/package/react-popups' }
+          ]
         }
       ]
     }
@@ -56,9 +62,18 @@ var App = React.createClass({
       )
     })
 
+    var displayTab = this.state.tabs[activeTab]
+    var links = displayTab.links ? displayTab.links.map(function(x, i){
+      return (
+        <span key={i}>
+          { i !== 0 ? ', ' : '' } 
+          <a href={x.link}>{x.name}</a>
+        </span>
+      )
+    }) : ''
     return (
       <div>
-        <GithubRibbon gitHref={'Radivarig/' +this.state.tabs[activeTab].repoName} />
+        <GithubRibbon gitHref={'Radivarig/' +displayTab.repoName} />
 
         <div style={{textAlign: 'center'}}>
 
@@ -66,18 +81,19 @@ var App = React.createClass({
           <hr/>
           <TwitterFollowButton user='Radivarig' showCount={true} />
           <h3>
-            {this.state.tabs[activeTab].displayName}
+            {displayTab.displayName}
             <span style={{position: 'absolute', transform: 'translate(75%)'}}>
-              <GithubButton
-                user='Radivarig'
-                repo={this.state.tabs[activeTab].repoName}
-                key={this.state.tabs[activeTab].repoName}
-                type={'star'}
-                showCount={true}
-                />
-            </span>
-          </h3>
+            <GithubButton
+              user='Radivarig'
+              repo={displayTab.repoName}
+              key={displayTab.repoName}
+              type={'star'}
+              showCount={true}
+              />
 
+          </span>
+          </h3>
+          { links ? <span>More info: {links}</span> : {} }
           <hr/>
         </div>
 
