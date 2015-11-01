@@ -5,7 +5,7 @@ var Router = require('react-router')
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
 var CommentCollapserViewer = require('./Components/CommentCollapserViewer.jsx')
-
+var UvSquaresViewer = require('./Components/UvSquaresViewer.jsx')
 
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
@@ -42,7 +42,13 @@ var App = React.createClass({
           , { name: 'chrome', link: 'https://chrome.google.com/webstore/detail/comment-collapser/glckkkgoiekmhgdkcogfmbecdkbnangb?hl=en' }
           ]
         }
-
+      , {
+          repoName: 'UvSquares'
+        , displayName: 'Blender UV Squares'
+        , links:  [
+            { name: 'CGCookie', link: 'https://cgcookiemarkets.com/all-products/uv-squares/' }
+          ]
+        }
       ]
     }
   }
@@ -139,6 +145,7 @@ var routes = (
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
+    <Route path="/UvSquares" component={UvSquaresViewer} />
 
   </Route>
 )
