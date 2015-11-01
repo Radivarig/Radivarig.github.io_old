@@ -68,8 +68,9 @@ var App = React.createClass({
 
 //    var tabStyle = {}
     var urlHash = location.href.split('#')[1]
-    var activeTab = 0
+    var activeTab = -1
     var Tabs = this.state.tabs.map(function(x, i) {
+      if (i === 0) return
       var isActive = false
       if (urlHash == '/' +x.repoName) {
         activeTab = i
@@ -87,7 +88,7 @@ var App = React.createClass({
       )
     })
 
-    var displayTab = this.state.tabs[activeTab]
+    var displayTab = activeTab > -1 ? this.state.tabs[activeTab] : {}
     var links = displayTab.links ? displayTab.links.map(function(x, i){
       return (
         <span key={i}>
@@ -122,7 +123,7 @@ var App = React.createClass({
 
           </span>
           </h3>
-          { links ? <span>More info: {links}</span> : {} }
+          { links ? <span>More info: {links}</span> : '' }
           <hr/>
         </div>
 
