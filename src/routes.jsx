@@ -4,6 +4,8 @@ var Router = require('react-router')
 
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
+var CommentCollapserViewer = require('./Components/CommentCollapserViewer.jsx')
+
 
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
@@ -32,6 +34,15 @@ var App = React.createClass({
             { name: 'npm', link: 'https://www.npmjs.com/package/react-popups' }
           ]
         }
+       , {
+          repoName: 'CommentCollapser'
+        , displayName: 'Facebook Comment Collapser'
+        , links:  [
+            { name: 'firefox', link: 'https://addons.mozilla.org/en-us/firefox/addon/commentcollapser/' }
+          , { name: 'chrome', link: 'https://chrome.google.com/webstore/detail/comment-collapser/glckkkgoiekmhgdkcogfmbecdkbnangb?hl=en' }
+          ]
+        }
+
       ]
     }
   }
@@ -127,6 +138,7 @@ var routes = (
   <Route path="/" component={App}>
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
+    <Route path="/CommentCollapser" component={CommentCollapserViewer} />
 
   </Route>
 )
