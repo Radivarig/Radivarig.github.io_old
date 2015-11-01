@@ -4,8 +4,6 @@ var Router = require('react-router')
 
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
-var CommentCollapserViewer = require('./Components/CommentCollapserViewer.jsx')
-var UvSquaresViewer = require('./Components/UvSquaresViewer.jsx')
 
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
@@ -139,9 +137,15 @@ var MyLink = React.createClass({
     )
   }
 })
-// this.replaceWith('/users', { userId: user.id }, query)
 
-//    <DefaultRoute component={Demo}/>
+// === Youtube Viewers
+
+var CommentCollapserViewer = React.createClass({ render: function() {
+  return <SimpleYoutube url={'https://www.youtube.com/watch?v=bAex9ILC3uo'} />}})
+
+var UvSquaresViewer = React.createClass({ render: function() {
+  return <SimpleYoutube url={'https://www.youtube.com/watch?v=VYZnGIql2UI'} />}})
+
 var routes = (
   <Route path="/" component={App}>
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
