@@ -30,7 +30,7 @@ var App = React.createClass({
     }
   }
 , componentDidMount: function() {
-    document.body.style.backgroundColor = '#F7F1FE'
+    document.body.style.backgroundColor = 'rgb(210, 212, 214)'
   }
 , render: function() {
     var self = this
