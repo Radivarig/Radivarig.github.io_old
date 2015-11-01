@@ -98,7 +98,7 @@ var App = React.createClass({
     }) : ''
     return (
       <div>
-        <GithubRibbon gitHref={'Radivarig/' +displayTab.repoName} />
+        <GithubRibbon gitHref={'Radivarig/' +(displayTab.repoName || '')} />
 
         <div style={{textAlign: 'center'}}>
 
@@ -108,13 +108,17 @@ var App = React.createClass({
           <h3>
             {displayTab.displayName}
             <span style={{position: 'absolute', transform: 'translate(75%)'}}>
-            <GithubButton
-              user='Radivarig'
-              repo={displayTab.repoName}
-              key={displayTab.repoName}
-              type={'star'}
-              showCount={true}
-              />
+            {
+              activeTab > -1 ?
+              <GithubButton
+                user='Radivarig'
+                repo={displayTab.repoName}
+                key={displayTab.repoName}
+                type={'star'}
+                showCount={true}
+                />
+              : ''
+            }
 
           </span>
           </h3>
