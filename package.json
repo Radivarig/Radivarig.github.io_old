@@ -20,6 +20,7 @@
     "history": "^1.13.0",
     "react": "^0.14.1",
     "react-dom": "^0.14.1",
-    "react-router": "^1.0.0-rc3"
+    "react-router": "^1.0.0-rc3",
+    "react-youtube": "^4.1.2"
   }
 }
