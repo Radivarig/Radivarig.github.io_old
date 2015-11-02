@@ -1,6 +1,6 @@
 var React = require('react')
 var Router = require('react-router')
-  , { Route, DefaultRoute, History } = Router
+  , { Route, DefaultRoute, History, IndexRoute } = Router
 
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
@@ -204,6 +204,17 @@ var NotFoundViewer = React.createClass({
   }
 })
 
+var ProfileViewer = React.createClass({
+  render: function() {
+    return (
+      <div style={{textAlign: 'center'}}>
+        <img style={{width: 200, height: 200}} src='https://avatars0.githubusercontent.com/u/6281737?v=3&s=460' />
+      </div>
+    )
+  }
+})
+
+
 // === Youtube Viewers
 
 var CommentCollapserViewer = React.createClass({ render: function() {
@@ -218,6 +229,7 @@ var EdgerViewer = React.createClass({ render: function() {
 
 var routes = (
   <Route path="/" component={App}>
+    <IndexRoute component={ProfileViewer} />
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
