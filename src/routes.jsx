@@ -193,6 +193,17 @@ var Unity3dProjectsViewer = React.createClass({
   }
 })
 
+var NotFoundViewer = React.createClass({
+  render: function() {
+    return (
+      <div style={{textAlign: 'center'}}>
+      ?
+      <img style={{width: 200, height: 200}} src='http://i.imgur.com/0opRxl2.gif' />
+      </div>
+    )
+  }
+})
+
 // === Youtube Viewers
 
 var CommentCollapserViewer = React.createClass({ render: function() {
@@ -213,7 +224,7 @@ var routes = (
     <Route path="/UvSquares" component={UvSquaresViewer} />
     <Route path="/Edger" component={EdgerViewer} />
     <Route path="/unity3d-projects" component={Unity3dProjectsViewer} />
-
+    <Route path='/*' component={NotFoundViewer} />
   </Route>
 )
 
