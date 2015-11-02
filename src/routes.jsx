@@ -217,14 +217,16 @@ var ProfileViewer = React.createClass({
 
 
 var StatCounter = React.createClass({
-  render: function() {
-    var sc_project=10672857
-    var sc_invisible=0
-    var sc_security="f4016a86"
-    var scJsHost = (("https:" == document.location.protocol) ?
+  componentDidMount: function() {
+    window.sc_project=10672857
+    window.sc_invisible=0
+    window.sc_security="f4016a86"
+    window.scJsHost = (("https:" == document.location.protocol) ?
       "https://secure." : "http://www.")
     document.write("<sc"+"ript type='text/javascript' src='" +
     scJsHost +"statcounter.com/counter/counter.js'></"+"script>")
+  }
+, render: function() {
 
     return (
       <div className="statcounter">
