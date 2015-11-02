@@ -56,6 +56,10 @@ var App = React.createClass({
             { name: 'BlenderArtists', link: 'http://blenderartists.org/forum/showthread.php?358615'}
           ]
         }
+      , {
+          pathName: 'unity3d-projects'
+        , displayName: 'Unity3d Projects'
+        }
 
       ]
     }
@@ -71,14 +75,14 @@ var App = React.createClass({
     var activeTab = -1
     var Tabs = this.state.tabs.map(function(x, i) {
       var isActive = false
-      if (urlHash == '/' +x.repoName) {
+      if (urlHash == '/' +(x.pathName || x.repoName)) {
         activeTab = i
         isActive = true
       }
       var handleClick = function() {}
       return (
         <MyLink onClick={handleClick}
-                name={x.repoName}
+                name={(x.pathName || x.repoName)}
                 key={i}
                 isActive={isActive}
                 >
@@ -96,6 +100,7 @@ var App = React.createClass({
         </span>
       )
     }) : ''
+
     return (
       <div>
         <GithubRibbon gitHref={'Radivarig/' +(displayTab.repoName || '')} />
@@ -109,7 +114,7 @@ var App = React.createClass({
             {displayTab.displayName}
             <span style={{position: 'absolute', transform: 'translate(75%)'}}>
             {
-              activeTab > -1 ?
+              activeTab > -1 && displayTab.repoName !== undefined ?
               <GithubButton
                 user='Radivarig'
                 repo={displayTab.repoName}
@@ -150,6 +155,44 @@ var MyLink = React.createClass({
   }
 })
 
+var Unity3dProjectsViewer = React.createClass({
+  render: function() {
+    return (
+      <div style={{textAlign: 'center'}}>
+
+        <ul style={{margin: 'auto', width: '60%', textAlign: 'left'}}>
+
+          <li>
+            <a href='https://github.com/Unity3D-Wine-Support/Unity3D-on-Wine/blob/master/text-editors-MonoDevelop/unity3d_native_monodevelop.sh'>
+            External editor </a>
+            bash script for bypassing MonoDevelop path issues when opening files in Unity3d running over Wine on Linux.
+          </li>
+
+          <li>
+            <a href='https://github.com/Radivarig/ZileKiticMile/blob/master/ZilaGUI.cs'>
+            Veiner</a>
+            , image marking application for Faculty of Medicine student used for automatization of tracking and comparing veins, made in Unity3d.
+          </li>
+
+          <li>
+            <a href='https://github.com/Radivarig/ProceduralMeshColliders/blob/master/Assets/Abiogenesis3d/Procedural%20Mesh%20Colliders/ProceduralMesh.cs'>
+            Procedural Mesh Collider </a>
+            generator asset for Unity3d.
+          </li>
+
+          <li>
+            <a href='https://github.com/Radivarig/AssetHandler/tree/master/Assets'>
+            Asset Handler</a>
+            , tool for handling .asset files using UnityEditor namespace.
+          </li>
+
+        </ul>
+
+      </div>
+    )
+  }
+})
+
 // === Youtube Viewers
 
 var CommentCollapserViewer = React.createClass({ render: function() {
@@ -161,6 +204,7 @@ var UvSquaresViewer = React.createClass({ render: function() {
 var EdgerViewer = React.createClass({ render: function() {
   return <SimpleYoutube url={'https://www.youtube.com/watch?v=ToHbROhUrEc'} />}})
 
+
 var routes = (
   <Route path="/" component={App}>
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
@@ -168,6 +212,7 @@ var routes = (
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
     <Route path="/UvSquares" component={UvSquaresViewer} />
     <Route path="/Edger" component={EdgerViewer} />
+    <Route path="/unity3d-projects" component={Unity3dProjectsViewer} />
 
   </Route>
 )
