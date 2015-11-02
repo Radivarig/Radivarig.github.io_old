@@ -133,6 +133,7 @@ var App = React.createClass({
 
         {self.props.children}
 
+        <StatCounter />
       </div>
     )
   }
@@ -213,6 +214,32 @@ var ProfileViewer = React.createClass({
     )
   }
 })
+
+
+var StatCounter = React.createClass({
+  render: function() {
+    var sc_project=10672857
+    var sc_invisible=0
+    var sc_security="f4016a86"
+    var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.")
+    document.write("<sc"+"ript type='text/javascript' src='" +
+    scJsHost +"statcounter.com/counter/counter.js'></"+"script>")
+
+    return (
+      <div className="statcounter">
+        <a title="create counter"
+            href="http://statcounter.com/free-hit-counter/"
+            target="_blank">
+          <img className="statcounter"
+                src="http://c.statcounter.com/10672857/0/f4016a86/0/"
+                alt="create counter" />
+        </a>
+      </div>
+    )
+  }
+})
+
 
 
 // === Youtube Viewers
