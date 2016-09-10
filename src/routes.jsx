@@ -109,7 +109,9 @@ var App = React.createClass({
 
           <div>{Tabs}</div>
           <hr/>
-          <TwitterFollowButton user='Radivarig' showCount={true} />
+          <div style={{height: '1em'}}>
+            <TwitterFollowButton user='Radivarig' showCount={true} />
+          </div>
           <h3>
             {displayTab.displayName}
             <span style={{position: 'absolute', transform: 'translate(75%)'}}>
