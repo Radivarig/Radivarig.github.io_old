@@ -2,6 +2,7 @@ var React = require('react')
 var Router = require('react-router')
   , { Route, DefaultRoute, History, IndexRoute } = Router
 
+var DragRangeViewer = require('../react-drag-range/src/DragRangeViewer.jsx')
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
 
@@ -21,42 +22,55 @@ var App = React.createClass({
     return {
       tabs: [
         {
+          repoName: 'react-drag-range'
+        , displayName: 'React Drag Range'
+        , links:  [
+            { name: 'npm', link: 'https://www.npmjs.com/package/react-drag-range' }
+          ]
+        },
+
+        {
           repoName: 'react-speed-reader'
         , displayName: 'React Speed Reader'
         , links:  [
             { name: 'npm', link: 'https://www.npmjs.com/package/react-speed-reader' }
           ]
-        }
-      , {
+        },
+
+        {
           repoName: 'react-popups'
         , displayName: 'React Popups'
         , links:  [
             { name: 'npm', link: 'https://www.npmjs.com/package/react-popups' }
           ]
-        }
-       , {
+        },
+
+         {
           repoName: 'CommentCollapser'
         , displayName: 'Facebook Comment Collapser'
         , links:  [
             { name: 'firefox', link: 'https://addons.mozilla.org/en-us/firefox/addon/commentcollapser/' }
           , { name: 'chrome', link: 'https://chrome.google.com/webstore/detail/comment-collapser/glckkkgoiekmhgdkcogfmbecdkbnangb?hl=en' }
           ]
-        }
-      , {
+        },
+
+        {
           repoName: 'UvSquares'
         , displayName: 'Blender UV Squares'
         , links:  [
             { name: 'CGCookie', link: 'https://cgcookiemarkets.com/all-products/uv-squares/' }
           ]
-        }
-      , {
+        },
+
+        {
           repoName: 'Edger'
         , displayName: 'Blender Edger'
         , links:  [
             { name: 'BlenderArtists', link: 'http://blenderartists.org/forum/showthread.php?358615'}
           ]
-        }
-      , {
+        },
+
+        {
           pathName: 'unity3d-projects'
         , displayName: 'Unity3d Projects'
         }
@@ -262,6 +276,7 @@ var EdgerViewer = React.createClass({ render: function() {
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={ProfileViewer} />
+    <Route path="/react-drag-range" component={DragRangeViewer} />
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
