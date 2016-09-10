@@ -5,6 +5,7 @@ var Router = require('react-router')
 var DragRangeViewer = require('../react-drag-range/src/DragRangeViewer.jsx')
 var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
 var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
+var AnyHeightViewer = require('../react-infinite-any-height/src/InfiniteAnyHeightViewer.jsx')
 
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
@@ -42,6 +43,14 @@ var App = React.createClass({
         , displayName: 'React Popups'
         , links:  [
             { name: 'npm', link: 'https://www.npmjs.com/package/react-popups' }
+          ]
+        },
+
+        {
+          repoName: 'react-infinite-any-height'
+        , displayName: 'React Infinite Any Height'
+        , links:  [
+            { name: 'npm', link: 'https://www.npmjs.com/package/react-infinite-any-height' }
           ]
         },
 
@@ -279,6 +288,7 @@ var routes = (
     <Route path="/react-drag-range" component={DragRangeViewer} />
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
+    <Route path="/react-infinite-any-height" component={AnyHeightViewer} />
     <Route path="/CommentCollapser" component={CommentCollapserViewer} />
     <Route path="/UvSquares" component={UvSquaresViewer} />
     <Route path="/Edger" component={EdgerViewer} />

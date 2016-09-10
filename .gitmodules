@@ -7,3 +7,6 @@
 [submodule "react-drag-range"]
 	path = react-drag-range
 	url = https://github.com/Radivarig/react-drag-range.git
+[submodule "react-infinite-any-height"]
+	path = react-infinite-any-height
+	url = https://github.com/Radivarig/react-infinite-any-height.git
