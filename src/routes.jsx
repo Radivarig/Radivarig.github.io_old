@@ -23,6 +23,15 @@ var App = React.createClass({
     return {
       tabs: [
         {
+          pathName: 'unity-gui-node-editor'
+        , displayName: 'GUI Node Editor'
+        , links:  [
+            { name: 'WebGL Demo', link: 'https://radivarig.github.io/GUINodeEditorWebGLDemo/' },
+            { name: 'Documentation', link: 'https://github.com/Radivarig/GUI-Node-Editor_docs-and-issue-tracker' },
+          ]
+        },
+
+        {
           repoName: 'react-drag-range'
         , displayName: 'React Drag Range'
         , links:  [
@@ -81,7 +90,7 @@ var App = React.createClass({
 
         {
           pathName: 'unity3d-projects'
-        , displayName: 'Unity3d Projects'
+        , displayName: 'Other Unity3d Projects'
         }
 
       ]
@@ -124,9 +133,19 @@ var App = React.createClass({
       )
     }) : ''
 
+    if (displayTab.repoName === '')
+      return <div/>
+
+    var showRibbon =
+          (displayTab.repoName && displayTab.repoName !== '') ||
+          (activeTab === -1)
+
     return (
       <div>
-        <GithubRibbon gitHref={'Radivarig/' +(displayTab.repoName || '')} />
+        {
+          ! showRibbon ? '' : 
+          <GithubRibbon gitHref={'Radivarig/' +(displayTab.repoName)} />
+        }
 
         <div style={{textAlign: 'center'}}>
 
@@ -241,6 +260,20 @@ var ProfileViewer = React.createClass({
   }
 })
 
+var UnityGuiNodeEditorViewer = React.createClass({
+  render: function() {
+    return (
+      <div style={{margin: 'auto'}}>
+        <iframe style={{display: 'block', margin: 'auto'}}
+          src='https://radivarig.github.io/GUINodeEditorWebGLDemo/'
+          width={1200}
+          height={800}
+        >
+        </iframe>
+      </div>
+    )
+  }
+})
 
 var StatCounter = React.createClass({
   componentDidMount: function() {
@@ -285,6 +318,7 @@ var EdgerViewer = React.createClass({ render: function() {
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={ProfileViewer} />
+    <Route path="/unity-gui-node-editor" component={UnityGuiNodeEditorViewer} />
     <Route path="/react-drag-range" component={DragRangeViewer} />
     <Route path="/react-speed-reader" component={SpeedReaderViewer} />
     <Route path="/react-popups" component={PopupsViewer} />
