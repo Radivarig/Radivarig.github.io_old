@@ -13,6 +13,8 @@ var TwitterFollowButton = require('./Components/TwitterFollowButton.jsx')
 
 var SimpleYoutube = require('./Components/SimpleYoutube.jsx')
 
+import "style!css!./index.css"
+
 var App = React.createClass({
   handleChange: function(name, e) {
     var chg = {}
