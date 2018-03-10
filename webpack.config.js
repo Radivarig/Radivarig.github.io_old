@@ -1,16 +1,47 @@
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+
 module.exports = {
-  entry: "./src/entry.js",
+  entry: {
+    main: __dirname + "/src/entry.js",
+  },
+
   output: {
-    path: "./",
-    filename: "bundle.js"
+    filename: "[name].js",
+    path: __dirname + "/dist",
   },
-  devServer: {
-    host: "0.0.0.0",
-  },
+
   devtool: "source-map",
+
   module: {
-    loaders: [
-      { test: /\.jsx?$/, loaders: ['babel', 'flowcheck', 'babel?blacklist=flow'], exclude: /node_modules/ }
-    ]
-  }
+    rules: [
+      {
+        test: /\.jsx?$/,
+        include: [/src/,
+          /node_modules\/react-infinite-any-height\/src\/Viewer.jsx/,
+          /node_modules\/react-drag-range\/src\/Viewer.jsx/,
+          /node_modules\/react-speed-reader\/src\/Viewer.jsx/,
+          /node_modules\/react-popups\/src\/Viewer.jsx/,
+        ],
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true },
+          }
+        ]
+      },
+    ],
+  },
+
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+    })
+  ],
 }

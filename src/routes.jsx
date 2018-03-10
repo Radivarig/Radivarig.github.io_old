@@ -1,11 +1,9 @@
 var React = require('react')
-var Router = require('react-router')
-  , { Route, DefaultRoute, History, IndexRoute } = Router
 
-var DragRangeViewer = require('../react-drag-range/src/DragRangeViewer.jsx')
-var SpeedReaderViewer = require('../react-speed-reader/src/SpeedReaderViewer.jsx')
-var PopupsViewer = require('../react-popups/src/PopupsViewer.jsx')
-var AnyHeightViewer = require('../react-infinite-any-height/src/InfiniteAnyHeightViewer.jsx')
+var DragRangeViewer = require('../node_modules/react-drag-range/src/Viewer.jsx')
+var SpeedReaderViewer = require('../node_modules/react-speed-reader/src/Viewer.jsx')
+var PopupsViewer = require('../node_modules/react-popups/src/Viewer.jsx')
+var AnyHeightViewer = require('../node_modules/react-infinite-any-height/test/Viewer.js')
 
 var GithubRibbon = require('./Components/GithubRibbon.jsx')
 var GithubButton = require('./Components/GithubButton.jsx')
@@ -15,24 +13,17 @@ var SimpleYoutube = require('./Components/SimpleYoutube.jsx')
 
 import "style!css!./index.css"
 
-var App = React.createClass({
-  handleChange: function(name, e) {
+class App extends React.Component {
+  handleChange = (name, e) => {
     var chg = {}
     chg[name] = e.target ? e.target.value : e
     this.setState(chg)
   }
-, getInitialState: function() {
+
+
+  getInitialState = () => {
     return {
       tabs: [
-        {
-          pathName: 'unity-gui-node-editor'
-        , displayName: 'GUI Node Editor'
-        , links:  [
-            { name: 'WebGL Demo', link: 'https://radivarig.github.io/GUINodeEditorWebGLDemo/' },
-            { name: 'Documentation', link: 'https://github.com/Radivarig/GUI-Node-Editor_docs-and-issue-tracker' },
-          ]
-        },
-
         {
           repoName: 'react-drag-range'
         , displayName: 'React Drag Range'
@@ -91,6 +82,15 @@ var App = React.createClass({
         },
 
         {
+          pathName: 'unity-gui-node-editor'
+        , displayName: 'GUI Node Editor'
+        , links:  [
+            { name: 'WebGL Demo', link: 'https://radivarig.github.io/GUINodeEditorWebGLDemo/' },
+            { name: 'Documentation', link: 'https://github.com/Radivarig/GUI-Node-Editor_docs-and-issue-tracker' },
+          ]
+        },
+
+        {
           pathName: 'unity3d-projects'
         , displayName: 'Other Unity3d Projects'
         }
@@ -98,22 +98,23 @@ var App = React.createClass({
       ]
     }
   }
-, componentDidMount: function() {
+
+  componentDidMount = () => {
     document.body.style.backgroundColor = 'rgb(210, 212, 214)'
   }
-, render: function() {
-    var self = this
+
+  render = () => {
 
 //    var tabStyle = {}
     var urlHash = location.href.split('#')[1]
     var activeTab = -1
-    var Tabs = this.state.tabs.map(function(x, i) {
+    var Tabs = this.state.tabs.map((x, i) => {
       var isActive = false
       if (urlHash == '/' +(x.pathName || x.repoName)) {
         activeTab = i
         isActive = true
       }
-      var handleClick = function() {}
+      var handleClick = () => {}
       return (
         <MyLink onClick={handleClick}
                 name={(x.pathName || x.repoName)}
@@ -126,7 +127,7 @@ var App = React.createClass({
     })
 
     var displayTab = activeTab > -1 ? this.state.tabs[activeTab] : {}
-    var links = displayTab.links ? displayTab.links.map(function(x, i){
+    var links = displayTab.links ? displayTab.links.map((x, i) => {
       return (
         <span key={i}>
           { i !== 0 ? ', ' : '' } 
@@ -177,7 +178,7 @@ var App = React.createClass({
           <hr/>
         </div>
 
-        {self.props.children}
+        {this.props.children}
 
         <StatCounter />
       </div>
@@ -185,13 +186,15 @@ var App = React.createClass({
   }
 })
 
-var MyLink = React.createClass({
+var MyLink extends React.Component {
   mixins: [ History ]
-, handleClick: function() {
+
+  handleClick = () => {
     //this.history.pushState(null, `/users/${user.id}`, query);
     this.history.replaceState(null, `/${this.props.name}`)
   }
-, render: function() {
+
+  render = () => {
     return (
       <button disabled={this.props.isActive}
               onClick={this.handleClick}
@@ -200,10 +203,10 @@ var MyLink = React.createClass({
       </button>
     )
   }
-})
+}
 
-var Unity3dProjectsViewer = React.createClass({
-  render: function() {
+var Unity3dProjectsViewer extends React.Component {
+  render = () => {
     return (
       <div style={{textAlign: 'center'}}>
 
@@ -238,10 +241,10 @@ var Unity3dProjectsViewer = React.createClass({
       </div>
     )
   }
-})
+}
 
-var NotFoundViewer = React.createClass({
-  render: function() {
+class NotFoundViewer extends React.Component {
+  render = () => {
     return (
       <div style={{textAlign: 'center'}}>
       <span style={{fontSize: '260px'}}>4</span>
@@ -250,20 +253,20 @@ var NotFoundViewer = React.createClass({
       </div>
     )
   }
-})
+}
 
-var ProfileViewer = React.createClass({
-  render: function() {
+const ProfileViewer extends React.Component {
+  render = () => {
     return (
       <div style={{textAlign: 'center'}}>
         <img style={{width: 200, height: 200}} src='https://avatars0.githubusercontent.com/u/6281737?v=3&s=460' />
       </div>
     )
   }
-})
+}
 
-var UnityGuiNodeEditorViewer = React.createClass({
-  render: function() {
+class UnityGuiNodeEditorViewer extends React.Component {
+  render = () => {
     return (
       <div style={{margin: 'auto'}}>
         <iframe style={{display: 'block', margin: 'auto'}}
@@ -275,10 +278,10 @@ var UnityGuiNodeEditorViewer = React.createClass({
       </div>
     )
   }
-})
+}
 
-var StatCounter = React.createClass({
-  componentDidMount: function() {
+class StatCounter extends React.Component {
+  componentDidMount = () => {
     window.sc_project=10672857
     window.sc_invisible=0
     window.sc_security="f4016a86"
@@ -287,7 +290,8 @@ var StatCounter = React.createClass({
     document.write("<sc"+"ript type='text/javascript' src='" +
     scJsHost +"statcounter.com/counter/counter.js'></"+"script>")
   }
-, render: function() {
+
+  render = () => {
 
     return (
       <div className="statcounter">
@@ -301,23 +305,17 @@ var StatCounter = React.createClass({
       </div>
     )
   }
-})
+}
 
 
 
 // === Youtube Viewers
-
-var CommentCollapserViewer = React.createClass({ render: function() {
-  return <SimpleYoutube url={'https://www.youtube.com/watch?v=bAex9ILC3uo'} />}})
-
-var UvSquaresViewer = React.createClass({ render: function() {
-  return <SimpleYoutube url={'https://www.youtube.com/watch?v=VYZnGIql2UI'} />}})
-
-var EdgerViewer = React.createClass({ render: function() {
-  return <SimpleYoutube url={'https://www.youtube.com/watch?v=ToHbROhUrEc'} />}})
+const CommentCollapserViewer = <SimpleYoutube url={'https://www.youtube.com/watch?v=bAex9ILC3uo'} />
+const UvSquaresViewer = <SimpleYoutube url={'https://www.youtube.com/watch?v=VYZnGIql2UI'} />
+const EdgerViewer = <SimpleYoutube url={'https://www.youtube.com/watch?v=ToHbROhUrEc'} />
 
 
-var routes = (
+export default (
   <Route path="/" component={App}>
     <IndexRoute component={ProfileViewer} />
     <Route path="/unity-gui-node-editor" component={UnityGuiNodeEditorViewer} />
@@ -332,5 +330,3 @@ var routes = (
     <Route path='/*' component={NotFoundViewer} />
   </Route>
 )
-
-module.exports = routes
