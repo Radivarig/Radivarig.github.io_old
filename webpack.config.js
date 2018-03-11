@@ -1,15 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-  entry: {
-    main: __dirname + "/src/entry.js",
-  },
-
-  output: {
-    filename: "[name].js",
-    path: __dirname + "/dist",
-  },
-
   devtool: "source-map",
 
   module: {
@@ -26,6 +17,18 @@ module.exports = {
           loader: "babel-loader",
         }
       },
+      {
+        enforce: "pre",
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "eslint-loader",
+            options: { fix: true }
+          },
+        ],
+      },
+
       {
         test: /\.html$/,
         use: [

@@ -1,26 +1,24 @@
-var React = require('react')
-var YouTube = require('react-youtube')
+import React from "react"
+import YouTube from "react-youtube"
 
-var SimpleYoutube = React.createClass({
-  render: function() {
-    var opts = {
-      height: '390',
-      width: '640',
-      playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
-      }
+export default class SimpleYoutube extends React.Component {
+  render = () => {
+    const opts = {
+      "height": "390",
+      "width": "640",
+      "playerVars": { // https://developers.google.com/youtube/player_parameters
+        "autoplay": 1,
+      },
     }
 
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{ "textAlign": "center" }}>
         <YouTube
-          url={this.props.url}
+          videoId={this.props.videoId}
           opts={opts}
           onReady={this._onReady}
         />
       </div>
     )
   }
-})
-
-module.exports = SimpleYoutube
+}

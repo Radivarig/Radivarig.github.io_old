@@ -1,3 +1,7 @@
-.statcounter {
-	display: none;
+body {
+	background-image: 
+		linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%,
+	    rgba(255, 255, 255, 0) 75%, #A3EF69 100%), 
+		linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, 
+	    rgba(255, 255, 255, 0) 75%, #A3EF69 100%);
 }
