@@ -19,8 +19,10 @@ type TabInfo = {
   route: string,
   repo: string,
   label: string,
-  links: Array<{name: string, url: string}>,
   component: Function,
+  image: string,
+  description: string,
+  links: Array<{name: string, url: string}>,
 }
 
 const TabInfos: Array<TabInfo> = [
@@ -29,6 +31,10 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-drag-range",
     "label": "React Drag Range",
     "component": DragRangeViewer,
+    "image": "",
+    "description": "React wrapper component for an element you want to interact with by dragging or clicking. \
+    It will callback with percent where you clicked it or how much you've dragged. \
+    Useful for creating sliders, or sliderless changing of numbers or enums.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-drag-range" },
     ],
@@ -39,6 +45,9 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-speed-reader",
     "label": "React Speed Reader",
     "component": SpeedReaderViewer,
+    "image": "http://i.imgur.com/M8Aw9Gh.gif",
+    "description": "This React component is a speed reading engine you can make your speed reader with. It detects letter of focus, \
+    show multiple words at the same time, and adjust reading speed.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-speed-reader" },
     ],
@@ -49,6 +58,10 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-popups",
     "label": "React Popups",
     "component": PopupsViewer,
+    "image": "http://i.imgur.com/VuwWFn2.gif",
+    "description": "This React component spawns custom React elements at mouse position on given events. \
+    Allows stacking up popups and closing all front popups when one is clicked or all if background is clicked. \
+    It can detect screen quadrant and translate the popup so that it have enough space for popup content.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-popups" },
     ],
@@ -59,6 +72,8 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-infinite-any-height",
     "label": "React Infinite Any Height",
     "component": AnyHeightViewer,
+    "image": "",
+    "description": "React wrapper component for react-infinite which adds automatic height detection of infinite list elements.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-infinite-any-height" },
     ],
@@ -69,6 +84,10 @@ const TabInfos: Array<TabInfo> = [
     "repo": "CommentCollapser",
     "label": "Facebook Comment Collapser",
     "component": CommentCollapserViewer,
+    "image": "https://media.giphy.com/media/fnQgMe1Mqm0qRzSyae/giphy.gif",
+    "description": "Browser add-on that selects comments containing other tagged users and squashes their height to few pixels, \
+    making the browsing of Facebook less cluttered. On squashed comment hover, it uncollapses and is shown in full height. \
+    On add-on icon click, all collapsed comments are removed from DOM.",
     "links": [
       { "name": "firefox", "url": "https://addons.mozilla.org/en-us/firefox/addon/commentcollapser/" },
       { "name": "chrome", "url": "https://chrome.google.com/webstore/detail/comment-collapser/glckkkgoiekmhgdkcogfmbecdkbnangb?hl=en" },
@@ -80,8 +99,11 @@ const TabInfos: Array<TabInfo> = [
     "repo": "UvSquares",
     "label": "Blender UV Squares",
     "component": UvSquaresViewer,
+    "image": "https://media.giphy.com/media/Rd6sPB8DGiKZhdMRNQ/giphy.gif",
+    "description": "Blender add-on that simplifies the process of stretching UVs to grid, using follow active quad face or stretching a line. \
+    Useful for already unwrapped geometry that needs to fit over a straight texture.",
     "links": [
-      { "name": "CGCookie", "url": "https://cgcookiemarkets.com/all-products/uv-squares/" },
+      { "name": "CG Cookie Markets", "url": "https://cgcookiemarkets.com/all-products/uv-squares/" },
     ],
   },
 
@@ -90,6 +112,9 @@ const TabInfos: Array<TabInfo> = [
     "repo": "Edger",
     "label": "Blender Edger",
     "component": EdgerViewer,
+    "image": "https://media.giphy.com/media/bFgqKXm10QfZrqPaaK/giphy.gif",
+    "description": "Blender add-on that fixates selected vertices to edges they sit on so that moving the edge also moves those vertices. \
+    Useful for adjusting the edgeloops for subdivide modifier. It can also generate a mesh without addded edgeloops.",
     "links": [
       { "name": "BlenderArtists", "url": "http://blenderartists.org/forum/showthread.php?358615" },
     ],
@@ -100,9 +125,13 @@ const TabInfos: Array<TabInfo> = [
     "repo": "",
     "label": "GUI Node Editor",
     "component": UnityGuiNodeEditorViewer,
+    "image": "",
+    "description": "Unity add-on that provides the skeleton for a custom node editor logic. \
+    It uses Unity GUI and is not bound to the editor meaning it can be exported in builds including WebGL.",
     "links": [
       { "name": "WebGL Demo", "url": "https://radivarig.github.io/GUINodeEditorWebGLDemo/" },
       { "name": "Documentation", "url": "https://github.com/Radivarig/GUI-Node-Editor_docs-and-issue-tracker" },
+      { "name": "Asset Store", "url": "https://www.assetstore.unity3d.com/#!/content/84160" },
     ],
   },
 
@@ -111,6 +140,8 @@ const TabInfos: Array<TabInfo> = [
     "repo": "/",
     "label": "Other Unity3d Projects",
     "component": Unity3dProjectsViewer,
+    "image": "",
+    "description": "",
     "links": [],
   },
 ]
