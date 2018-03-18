@@ -1,5 +1,5 @@
 body {
-	background-color: grey;
+  background-color: #f0f0f0;
 }
 
 @keyframes highlight {
@@ -14,4 +14,11 @@ body {
 .highlight {
   animation: highlight 4s;
   animation-fill-mode: forwards;
+}
+
+
+hr {
+border: 0 none;
+  height: 0.8px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), purple, rgba(0, 0, 0, 0));
 }
