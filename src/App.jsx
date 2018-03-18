@@ -33,17 +33,15 @@ export default class App extends React.Component {
         })
 
         const contents = tabInfos.map ((tab, i) => {
+          const isActive = props.location.hash === `#${tab.route}`
+
           let content =
             <div
               key={i}
               id={tab.route}
             >
               {tab.label}
-              {tab.description}
-              <hr />
             </div>
-
-          const isActive = props.location.hash === `#${tab.route}`
 
           if (isActive)
             content =
@@ -55,14 +53,22 @@ export default class App extends React.Component {
 
         })
 
+        const navStyle = {
+          "transform": "translateY(-50%)",
+          "top": "50%",
+          "display": "flex",
+          "alignItems": "center",
+          "flexDirection": "column",
+          "position": "fixed",
+          "border": "1px solid red",
+        }
+
         return (
           <div>
             <Grid container justify="center">
 
               <Grid item xs={12} md={3}>
-                <div style={{ "border": "1px solid blue" }}>
-                  <ProfileViewer />
-                </div>
+                <ProfileViewer />
               </Grid>
 
               <Grid item xs={12} md={6}>
@@ -71,7 +77,7 @@ export default class App extends React.Component {
                     exact path="/"
                     component={() => {
                       return (
-                        <div style={{ "border": "1px solid red" }}>
+                        <div>
                           {contents}
                         </div>
                       )
@@ -84,14 +90,18 @@ export default class App extends React.Component {
 
               <Grid item md={3}>
                 <Hidden smDown implementation="css">
-                  <Grid container direction="column">
-                    {routes}
+                  <Grid container>
+                    <div style={navStyle}>
+                      {routes}
+                    </div>
                   </Grid>
                 </Hidden>
               </Grid>
 
             </Grid>
+
             <StatCounter />
+
           </div>
         )
       }}
