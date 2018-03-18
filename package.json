@@ -27,13 +27,14 @@
     "html-webpack-plugin": "^3.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-router-hash-link": "^1.2.0",
     "style-loader": "^0.20.2",
     "webpack": "^4.1.0",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "material-ui": "^1.0.0-beta.36",
+    "material-ui": "^1.0.0-beta.37",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-drag-range": "^0.3.0",

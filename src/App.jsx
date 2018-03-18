@@ -1,77 +1,101 @@
 import React from "react"
-import { Switch, HashRouter, NavLink, Route } from "react-router-dom"
+import { Switch, BrowserRouter, Route } from "react-router-dom"
+import { HashLink as Link } from "react-router-hash-link"
 
 import ProfileViewer from "./Components/ProfileViewer.jsx"
 import NotFoundViewer from "./Components/NotFoundViewer.jsx"
-
-import TwitterFollowButton from "./Components/TwitterFollowButton.jsx"
 import StatCounter from "./Components/StatCounter.jsx"
 
-import TabDetails from "./Components/TabDetails.jsx"
+import { Grid, Button, Hidden } from "material-ui"
 
 import tabInfos from "./tabInfos.js"
-// const tabInfosByRoute = tabInfos.reduce ((a, b) => {a[b.route] = b; return a}, {})
+
+import "style-loader!css-loader!./index.css"
 
 export default class App extends React.Component {
-  componentDidMount = () => {
-    document.body.style.backgroundColor = "rgb(210, 212, 214)"
-  }
-
   render = () => (
-    <HashRouter>
+    <BrowserRouter>
       <Route render={(props) => {
-        const tabs = tabInfos.map ((tab, i) => {
-          const route = `/${tab.route}`
-          const isActive = props.location.pathname === route
+
+        const routes = tabInfos.map ((tab, i) => {
+          const buttonStyle = {
+            "padding": 0,
+            "minHeight": 0,
+          }
           return (
-            <NavLink
+            <Link
+              to={`#${tab.route}`}
               key={i}
-              to={route}
             >
-              <button disabled={isActive}>
-                {tab.label}
-              </button>
-            </NavLink>
+              <Button style={buttonStyle}>{tab.label}</Button>
+            </Link>
           )
         })
 
-        return (
-          <div style={{ "textAlign": "center" }}>
-            <ul>
-              {tabs}
-            </ul>
-
-            <div style={{ "height": "1em" }}>
-              <TwitterFollowButton user='Radivarig' showCount={true} />
+        const contents = tabInfos.map ((tab, i) => {
+          let content =
+            <div
+              key={i}
+              id={tab.route}
+            >
+              {tab.label}
+              {tab.description}
+              <hr />
             </div>
 
-            <Switch>
-              <Route exact path="/" component={ProfileViewer} />
-              {
-                tabInfos.map ((t, i) =>
+          const isActive = props.location.hash === `#${tab.route}`
+
+          if (isActive)
+            content =
+              <div key={i} className="highlight">
+                {content}
+              </div>
+
+          return content
+
+        })
+
+        return (
+          <div>
+            <Grid container justify="center">
+
+              <Grid item xs={12} md={3}>
+                <div style={{ "border": "1px solid blue" }}>
+                  <ProfileViewer />
+                </div>
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <Switch>
                   <Route
-                    key={i} exact path={`/${t.route}`}
-                    render={() =>
-                      <div>
-                        <hr />
-                        <TabDetails tab={t} />
-                        <hr />
-                        <t.component />
-                      </div>
-                    }
+                    exact path="/"
+                    component={() => {
+                      return (
+                        <div style={{ "border": "1px solid red" }}>
+                          {contents}
+                        </div>
+                      )
+                    }}
                   />
-                )
-              }
-              <Route path='/*' component={NotFoundViewer} />
+                  <Route path='/*' component={NotFoundViewer} />
 
-            </Switch>
+                </Switch>
+              </Grid>
 
+              <Grid item md={3}>
+                <Hidden smDown implementation="css">
+                  <Grid container direction="column">
+                    {routes}
+                  </Grid>
+                </Hidden>
+              </Grid>
+
+            </Grid>
             <StatCounter />
-
           </div>
         )
       }}
       />
-    </HashRouter>
+    </BrowserRouter>
   )
 }
