@@ -6,6 +6,8 @@ import ProfileViewer from "./Components/ProfileViewer.jsx"
 import NotFoundViewer from "./Components/NotFoundViewer.jsx"
 import StatCounter from "./Components/StatCounter.jsx"
 
+import GithubRibbon from "./Components/GithubRibbon.jsx"
+
 import { Grid, Button, Hidden } from "material-ui"
 
 import tabInfos from "./tabInfos.js"
@@ -101,6 +103,7 @@ export default class App extends React.Component {
             </Grid>
 
             <StatCounter />
+            <GithubRibbon gitHref="Radivarig" />
 
           </div>
         )
