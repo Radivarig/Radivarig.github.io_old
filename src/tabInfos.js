@@ -46,8 +46,8 @@ const TabInfos: Array<TabInfo> = [
     "label": "React Speed Reader",
     "component": SpeedReaderViewer,
     "image": "http://i.imgur.com/M8Aw9Gh.gif",
-    "description": "This React component is a speed reading engine you can make your speed reader with. It detects letter of focus, \
-    show multiple words at the same time, and adjust reading speed.",
+    "description": "React speed reading engine you can make your speed reader with. \
+    It can detect letter of focus, show multiple words at the same time, and adjust reading speed.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-speed-reader" },
     ],
@@ -59,9 +59,9 @@ const TabInfos: Array<TabInfo> = [
     "label": "React Popups",
     "component": PopupsViewer,
     "image": "http://i.imgur.com/VuwWFn2.gif",
-    "description": "This React component spawns custom React elements at mouse position on given events. \
+    "description": "React component that spawns custom React elements at mouse position on given events. \
     Allows stacking up popups and closing all front popups when one is clicked or all if background is clicked. \
-    It can detect screen quadrant and translate the popup so that it have enough space for popup content.",
+    It can detect screen quadrant and translate the popup so that it has enough space for popup content.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-popups" },
     ],
