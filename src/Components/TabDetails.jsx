@@ -1,10 +1,8 @@
 import React from "react"
-
-import GithubRibbon from "./GithubRibbon.jsx"
-import GithubButton from "./GithubButton.jsx"
+import { Button } from "material-ui"
 
 export default (props) => {
-  const { tab } = props
+  const { tab, imgFloatLeft } = props
   const links = tab.links.map ((l, i) =>
     <span key={i}>
       { i !== 0 ? ", " : "" }
@@ -13,23 +11,28 @@ export default (props) => {
   )
 
   return (
-    <div>
-      <h3>
+    <div style={{
+      "textAlign": "center",
+    }}
+    >
+      <Button style={{ "float": imgFloatLeft ? "left" : "right" }}>
+        {
+          tab.image ?
+            <img
+              style={{ "width": 160, "height": 100 }}
+              src={tab.image}
+            />
+            : ""
+        }
+      </Button>
+      <Button>
         {tab.label}
-        <span style={{ "position": "absolute", "transform": "translate(75%)" }}>
-          <GithubButton
-            user='Radivarig'
-            repo={tab.repo}
-            key={tab.label}
-            type={"star"}
-            showCount={true}
-          />
-        </span>
-      </h3>
+      </Button>
+      <div>
+        {tab.description}
+      </div>
 
-      {links.length ? <span>More info: {links}</span> : ""}
-      {tab.repo ? <GithubRibbon gitHref={`Radivarig/${tab.repo}`} /> : ""}
-
+      <div style={{ "clear": "both" }} />
     </div>
   )
 }

@@ -21,6 +21,26 @@ import tabInfos from "./tabInfos.js"
 
 import "style-loader!css-loader!./index.css"
 
+const styles = {
+  "nav": {
+    "button": {
+      "padding": 0,
+      "minHeight": 0,
+    },
+    "root": {
+      "transform": "translateY(-50%)",
+      "top": "50%",
+      "display": "flex",
+      "alignItems": "center",
+      "flexDirection": "column",
+      "position": "fixed",
+    },
+  },
+  "demo": {
+    "boxShadow": "inset 0 0 10px #000000",
+  },
+}
+
 export default class App extends React.Component {
   render = () => (
     <MuiThemeProvider theme={theme}>
@@ -28,16 +48,12 @@ export default class App extends React.Component {
         <Route render={(props) => {
 
           const routes = tabInfos.map ((tab, i) => {
-            const buttonStyle = {
-              "padding": 0,
-              "minHeight": 0,
-            }
             return (
               <Link
                 to={`#${tab.route}`}
                 key={i}
               >
-                <Button style={buttonStyle}>{tab.label}</Button>
+                <Button style={styles.nav.button}>{tab.label}</Button>
               </Link>
             )
           })
@@ -51,6 +67,15 @@ export default class App extends React.Component {
                 id={tab.route}
               >
                 <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
+
+                {
+                  isActive ?
+                    <div style={styles.demo}>
+                      <tab.component />
+                    </div>
+                    : ""
+                }
+
                 <hr />
               </div>
 
@@ -63,15 +88,6 @@ export default class App extends React.Component {
             return content
 
           })
-
-          const navStyle = {
-            "transform": "translateY(-50%)",
-            "top": "50%",
-            "display": "flex",
-            "alignItems": "center",
-            "flexDirection": "column",
-            "position": "fixed",
-          }
 
           return (
             <div>
@@ -101,7 +117,7 @@ export default class App extends React.Component {
                 <Grid item md={3}>
                   <Hidden smDown implementation="css">
                     <Grid container>
-                      <div style={navStyle}>
+                      <div style={styles.nav.root}>
                         {routes}
                       </div>
                     </Grid>
