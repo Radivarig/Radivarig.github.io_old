@@ -16,6 +16,7 @@ const theme = createMuiTheme ({
     // "type": "dark",
   },
 })
+
 import tabInfos from "./tabInfos.js"
 
 import "style-loader!css-loader!./index.css"
@@ -49,7 +50,8 @@ export default class App extends React.Component {
                 key={i}
                 id={tab.route}
               >
-                <TabDetails tab={tab} />
+                <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
+                <hr />
               </div>
 
             if (isActive)
@@ -69,7 +71,6 @@ export default class App extends React.Component {
             "alignItems": "center",
             "flexDirection": "column",
             "position": "fixed",
-            "border": "1px solid red",
           }
 
           return (
