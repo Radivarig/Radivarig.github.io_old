@@ -1,6 +1,6 @@
 import React from "react"
 
-import DragRangeViewer from "./Components/DragRangeViewer.jsx" // "../node_modules/react-drag-range/src/Viewer.jsx"
+import DragRangeViewer from "../node_modules/react-drag-range/src/Viewer.jsx"
 import SpeedReaderViewer from "../node_modules/react-speed-reader/src/Viewer.jsx"
 import PopupsViewer from "../node_modules/react-popups/src/Viewer.jsx"
 import AnyHeightViewer from "../node_modules/react-infinite-any-height/src/Viewer.jsx"
