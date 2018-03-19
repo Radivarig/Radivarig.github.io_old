@@ -1,5 +1,5 @@
 import React from "react"
-import { Switch, BrowserRouter, Route } from "react-router-dom"
+import { Switch, HashRouter, Route } from "react-router-dom"
 import { HashLink as Link } from "react-router-hash-link"
 
 import ProfileViewer from "./Components/ProfileViewer.jsx"
@@ -8,9 +8,11 @@ import StatCounter from "./Components/StatCounter.jsx"
 import TabDetails from "./Components/TabDetails.jsx"
 
 import GithubRibbon from "./Components/GithubRibbon.jsx"
+import GithubButton from "./Components/GithubButton.jsx"
 
 import { Grid, Button, Hidden } from "material-ui"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
+
 const theme = createMuiTheme ({
   "palette": {
     // "type": "dark",
@@ -36,21 +38,18 @@ const styles = {
       "position": "fixed",
     },
   },
-  "demo": {
-    "boxShadow": "inset 0 0 10px #000000",
-  },
 }
 
 export default class App extends React.Component {
   render = () => (
     <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Route render={(props) => {
 
           const routes = tabInfos.map ((tab, i) => {
             return (
               <Link
-                to={`#${tab.route}`}
+                to={`/${tab.route}`}
                 key={i}
               >
                 <Button style={styles.nav.button}>{tab.label}</Button>
@@ -67,14 +66,6 @@ export default class App extends React.Component {
                 id={tab.route}
               >
                 <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
-
-                {
-                  isActive ?
-                    <div style={styles.demo}>
-                      <tab.component />
-                    </div>
-                    : ""
-                }
 
                 <hr />
               </div>
@@ -109,6 +100,38 @@ export default class App extends React.Component {
                         )
                       }}
                     />
+                    {
+                      tabInfos.map ((tab, i) => {
+                        return (
+                          <Route
+                            key={i}
+                            exact path={`/${tab.route}`}
+                            component={() => {
+                              tab.image = undefined
+                              return (
+                                <div style={{ "textAlign": "center" }}>
+                                  {
+                                    tab.repo ?
+                                      <GithubButton
+                                        user="Radivarig"
+                                        repo={tab.repo}
+                                        type="star"
+                                        showCount
+
+                                      /> : ""
+                                  }
+                                  <TabDetails tab={tab} />
+
+                                  <hr />
+                                  <tab.component />
+                                </div>
+                              )
+                            }}
+                          />
+                        )
+                      })
+                    }
+
                     <Route path='/*' component={NotFoundViewer} />
 
                   </Switch>
@@ -127,13 +150,16 @@ export default class App extends React.Component {
               </Grid>
 
               <StatCounter />
-              <GithubRibbon gitHref="Radivarig" />
+
+              <Hidden xsDown implementation="css">
+                <GithubRibbon gitHref="Radivarig" />
+              </Hidden>
 
             </div>
           )
         }}
         />
-      </BrowserRouter>
+      </HashRouter>
     </MuiThemeProvider>
   )
 }
