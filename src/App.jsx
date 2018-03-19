@@ -96,7 +96,6 @@ export default class App extends React.Component {
                             key={i}
                             exact path={`/${tab.route}`}
                             component={() => {
-                              tab.image = undefined
                               return (
                                 <div style={{ "textAlign": "center" }}>
                                   {
@@ -109,7 +108,7 @@ export default class App extends React.Component {
 
                                       /> : ""
                                   }
-                                  <TabDetails tab={tab} />
+                                  <TabDetails tab={Object.assign ({}, tab, { "image": "" })} />
 
                                   <hr />
                                   <tab.component />
