@@ -1,0 +1,36 @@
+{
+  "basics": {
+    "name": "Reslav Hollos",
+    "label": "Software Engineer",
+    "picture": "https://lh3.googleusercontent.com/r59CGndvZIb8_oeS2w1wBTJx8YcHEyaoYiVr6pY34UN09De3IOH0_iVbWT0_6QxLnjrN6H2LM38w",
+    "email": "reslav.hollos@gmail.com",
+    "phone": "",
+    "website": "https://radivarig.github.io",
+    "summary": "SUmmary",
+    "location": {
+      "address": "",
+      "postalCode": "10000",
+      "city": "Zagreb",
+      "countryCode": "HR",
+      "region": "Croatia"
+    }
+  },
+  "skills": [
+    "frontend",
+    "backend",
+    "linux",
+    "git",
+    "javascript",
+    "html",
+    "css",
+    "node",
+    "webpack",
+    "babel",
+    "react",
+    "redux",
+    "unit tests",
+    "python",
+    "c#"
+  ]
+
+}
