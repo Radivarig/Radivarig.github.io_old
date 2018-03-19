@@ -60,7 +60,11 @@ export default class App extends React.Component {
 
           const contents = tabInfos.map ((tab, i) =>
             <div key={i}>
-              <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
+              <TabDetails
+                tab={tab}
+                imgFloatLeft={i % 2 === 1}
+                onClick={() => {props.history.push (`/${tab.route}`)}}
+              />
               <hr />
             </div>
           )

@@ -16,7 +16,10 @@ export default (props) => {
     >
       {
         tab.image ?
-          <Button style={{ "float": imgFloatLeft ? "left" : "right" }}>
+          <Button
+            style={{ "float": imgFloatLeft ? "left" : "right" }}
+            onClick={props.onClick}
+          >
             <img
               style={{ "width": 160, "height": 100 }}
               src={tab.image}
@@ -24,7 +27,7 @@ export default (props) => {
           </Button>
           : ""
       }
-      <Button>
+      <Button onClick={props.onClick}>
         {tab.label}
       </Button>
       {links}
