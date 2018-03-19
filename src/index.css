@@ -2,21 +2,6 @@ body {
   background-color: #f0f0f0;
 }
 
-@keyframes highlight {
-  0% {
-    background: lightyellow
-  }
-  100% {
-    background: none;
-  }
-}
-
-.highlight {
-  animation: highlight 4s;
-  animation-fill-mode: forwards;
-}
-
-
 hr {
 border: 0 none;
   height: 0.8px;

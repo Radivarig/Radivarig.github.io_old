@@ -1,6 +1,5 @@
 import React from "react"
 import { Switch, HashRouter, Route } from "react-router-dom"
-import { HashLink as Link } from "react-router-hash-link"
 
 import ProfileViewer from "./Components/ProfileViewer.jsx"
 import NotFoundViewer from "./Components/NotFoundViewer.jsx"
@@ -45,40 +44,26 @@ export default class App extends React.Component {
     <MuiThemeProvider theme={theme}>
       <HashRouter>
         <Route render={(props) => {
-
           const routes = tabInfos.map ((tab, i) => {
+            const isActive = props.location.pathname === `/${tab.route}`
             return (
-              <Link
-                to={`/${tab.route}`}
+              <Button
                 key={i}
+                color={isActive ? "secondary" : "default"}
+                style={styles.nav.button}
+                onClick={() => {props.history.push (`/${tab.route}`)}}
               >
-                <Button style={styles.nav.button}>{tab.label}</Button>
-              </Link>
+                {tab.label}
+              </Button>
             )
           })
 
-          const contents = tabInfos.map ((tab, i) => {
-            const isActive = props.location.hash === `#${tab.route}`
-
-            let content =
-              <div
-                key={i}
-                id={tab.route}
-              >
-                <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
-
-                <hr />
-              </div>
-
-            if (isActive)
-              content =
-                <div key={i} className="highlight">
-                  {content}
-                </div>
-
-            return content
-
-          })
+          const contents = tabInfos.map ((tab, i) =>
+            <div key={i}>
+              <TabDetails tab={tab} imgFloatLeft={i % 2 === 1} />
+              <hr />
+            </div>
+          )
 
           return (
             <div>
