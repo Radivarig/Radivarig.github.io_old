@@ -5,7 +5,6 @@ export default (props) => {
   const { tab, imgFloatLeft } = props
   const links = tab.links.map ((l, i) =>
     <Button key={i}>
-      { i !== 0 ? ", " : "" }
       <a target="__BLANK" href={l.url}>{l.name}</a>
     </Button>
   )
