@@ -6,8 +6,8 @@ export default class UnityGuiNodeEditorViewer extends React.Component {
       <iframe
         style={{ "display": "block", "margin": "auto" }}
         src='https://radivarig.github.io/GUINodeEditorWebGLDemo/'
-        width={1200}
-        height={800}
+        width={960}
+        height={645}
       />
     </div>
   )
