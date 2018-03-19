@@ -31,7 +31,7 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-drag-range",
     "label": "React Drag Range",
     "component": DragRangeViewer,
-    "image": "",
+    "image": "https://media.giphy.com/media/3HBTgDayVb1kZb3vEv/giphy.gif",
     "description": "React wrapper component for an element you want to interact with by dragging or clicking. \
     It will callback with percent where you clicked it or how much you've dragged. \
     Useful for creating sliders, or sliderless changing of numbers or enums.",
@@ -45,7 +45,7 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-speed-reader",
     "label": "React Speed Reader",
     "component": SpeedReaderViewer,
-    "image": "http://i.imgur.com/M8Aw9Gh.gif",
+    "image": "https://media.giphy.com/media/tKxZarm7byLkNYSo71/giphy.gif",
     "description": "React speed reading engine you can make your speed reader with. \
     It can detect letter of focus, show multiple words at the same time, and adjust reading speed.",
     "links": [
@@ -72,7 +72,7 @@ const TabInfos: Array<TabInfo> = [
     "repo": "react-infinite-any-height",
     "label": "React Infinite Any Height",
     "component": AnyHeightViewer,
-    "image": "",
+    "image": "https://media.giphy.com/media/9Vxtu8cm8Rx6tD4y8r/giphy.gif",
     "description": "React wrapper component for react-infinite which adds automatic height detection of infinite list elements.",
     "links": [
       { "name": "npm", "url": "https://www.npmjs.com/package/react-infinite-any-height" },
@@ -125,11 +125,11 @@ const TabInfos: Array<TabInfo> = [
     "repo": "",
     "label": "GUI Node Editor",
     "component": UnityGuiNodeEditorViewer,
-    "image": "",
+    "image": "https://media.giphy.com/media/20MsuSDx5BAZ5n1jTa/giphy.gif",
     "description": "Unity add-on that provides the skeleton for a custom node editor logic. \
     It uses Unity GUI and is not bound to the editor meaning it can be exported in builds including WebGL.",
     "links": [
-      { "name": "WebGL Demo", "url": "https://radivarig.github.io/GUINodeEditorWebGLDemo/" },
+      { "name": "WebGL", "url": "https://radivarig.github.io/GUINodeEditorWebGLDemo/" },
       { "name": "Documentation", "url": "https://github.com/Radivarig/GUI-Node-Editor_docs-and-issue-tracker" },
       { "name": "Asset Store", "url": "https://www.assetstore.unity3d.com/#!/content/84160" },
     ],
