@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Button, SvgIcon, Typography, Chip } from "material-ui"
+import { Grid, Button, SvgIcon, Chip } from "material-ui"
 
 import resume from "../resume.json"
 import icons from "../svgIcons.js"
@@ -33,15 +33,8 @@ export default (props) =>
             />
           </Button>
 
-          <div>
-            <Typography>
-              Reslav Hollos
-            </Typography>
-
-            <Typography>
-              Software Engineer
-            </Typography>
-          </div>
+          <div>Reslav Hollos</div>
+          <div>Software Engineer</div>
 
         </Grid>
         <Grid item xs={6} sm={12}>
