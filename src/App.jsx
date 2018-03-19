@@ -44,7 +44,7 @@ export default class App extends React.Component {
     <MuiThemeProvider theme={theme}>
       <HashRouter>
         <Route render={(props) => {
-          const routes = tabInfos.map ((tab, i) => {
+          const routes = ([{ "route": "", "label": "home" }].concat (tabInfos)).map ((tab, i) => {
             const isActive = props.location.pathname === `/${tab.route}`
             return (
               <Button
