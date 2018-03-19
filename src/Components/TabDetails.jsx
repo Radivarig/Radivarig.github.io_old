@@ -15,16 +15,16 @@ export default (props) => {
       "textAlign": "center",
     }}
     >
-      <Button style={{ "float": imgFloatLeft ? "left" : "right" }}>
-        {
-          tab.image ?
+      {
+        tab.image ?
+          <Button style={{ "float": imgFloatLeft ? "left" : "right" }}>
             <img
               style={{ "width": 160, "height": 100 }}
               src={tab.image}
             />
-            : ""
-        }
-      </Button>
+          </Button>
+          : ""
+      }
       <Button>
         {tab.label}
       </Button>
