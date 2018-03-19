@@ -83,7 +83,7 @@ export default (props) =>
 
           <hr />
           <div>
-            This site contains demo examples of my projects.
+            Click navigation or on title of each to open project demo.
           </div>
 
         </Grid>
