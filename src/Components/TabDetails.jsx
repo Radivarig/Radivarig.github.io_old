@@ -4,10 +4,10 @@ import { Button } from "material-ui"
 export default (props) => {
   const { tab, imgFloatLeft } = props
   const links = tab.links.map ((l, i) =>
-    <span key={i}>
+    <Button key={i}>
       { i !== 0 ? ", " : "" }
-      <a href={l.url}>{l.name}</a>
-    </span>
+      <a target="__BLANK" href={l.url}>{l.name}</a>
+    </Button>
   )
 
   return (
@@ -28,6 +28,8 @@ export default (props) => {
       <Button>
         {tab.label}
       </Button>
+      {links}
+
       <div>
         {tab.description}
       </div>
