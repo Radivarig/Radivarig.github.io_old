@@ -74,7 +74,7 @@ export default class App extends React.Component {
               <Grid container justify="center">
 
                 <Grid item xs={12} md={3}>
-                  <ProfileViewer />
+                  <ProfileViewer onClickPicture={() => {props.history.push ("/")}} />
                 </Grid>
 
                 <Grid item xs={12} md={6}>
