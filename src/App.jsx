@@ -44,11 +44,42 @@ const styles = {
   },
 }
 
-export default class App extends React.Component {
+class NavMenu extends React.Component {
   state = { "navOpen": false }
 
   handleNavToggle = () => this.setState ({ "navOpen": !this.state.navOpen })
   handleNavClose = () => this.setState ({ "navOpen": false });
+
+  render = () => (
+    <div>
+      <SvgIcon onClick={this.handleNavToggle} style={styles.nav.menu}>
+        {icons.menu}
+      </SvgIcon>
+
+      <Drawer
+        anchor="right"
+        open={this.state.navOpen}
+        onClose={this.handleNavClose}
+      >
+        {
+          this.props.items.map ((item, i) =>
+            <MenuItem
+              key={i} onClick={(e) => {
+                this.handleNavClose ()
+                item.props.onClick (e)
+              }}
+            >
+              {item}
+            </MenuItem>
+          )
+        }
+      </Drawer>
+    </div>
+
+  )
+}
+
+export default class App extends React.Component {
 
   render = () => (
     <MuiThemeProvider theme={theme}>
@@ -81,32 +112,10 @@ export default class App extends React.Component {
 
           return (
             <div>
-
-              <Hidden mdUp implementation="css">
-                <SvgIcon onClick={this.handleNavToggle} style={styles.nav.menu}>
-                  {icons.menu}
-                </SvgIcon>
-              </Hidden>
-
-              <Drawer
-                anchor="right"
-                open={this.state.navOpen}
-                onClose={this.handleNavClose}
-              >
-                {
-                  routes.map ((route, i) =>
-                    <MenuItem
-                      key={i} onClick={(e) => {
-                        this.handleNavClose ()
-                        route.props.onClick (e)
-                      }}
-                    >
-                      {route}
-                    </MenuItem>)
-                }
-              </Drawer>
-
               <Grid container justify="center">
+                <Hidden mdUp implementation="css">
+                  <NavMenu items={routes} />
+                </Hidden>
 
                 <Grid item xs={12} md={3}>
                   <ProfileViewer onClickPicture={() => {props.history.push ("/")}} />
