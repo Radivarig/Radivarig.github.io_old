@@ -31,7 +31,8 @@ const styles = {
     },
     "menu": {
       "position": "fixed",
-      "padding": 10,
+      "padding": 20,
+      "zIndex": 2,
     },
     "root": {
       "transform": "translateY(-50%)",
