@@ -9,8 +9,9 @@ import TabDetails from "./Components/TabDetails.jsx"
 import GithubRibbon from "./Components/GithubRibbon.jsx"
 import GithubButton from "./Components/GithubButton.jsx"
 
-import { Grid, Button, Hidden } from "material-ui"
+import { Grid, Button, Hidden, Drawer, MenuItem, SvgIcon } from "material-ui"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
+import icons from "./svgIcons.js"
 
 const theme = createMuiTheme ({
   "palette": {
@@ -28,6 +29,10 @@ const styles = {
       "padding": 0,
       "minHeight": 0,
     },
+    "menu": {
+      "position": "fixed",
+      "padding": 10,
+    },
     "root": {
       "transform": "translateY(-50%)",
       "top": "50%",
@@ -40,6 +45,11 @@ const styles = {
 }
 
 export default class App extends React.Component {
+  state = { "navOpen": false }
+
+  handleNavToggle = () => this.setState ({ "navOpen": !this.state.navOpen })
+  handleNavClose = () => this.setState ({ "navOpen": false });
+
   render = () => (
     <MuiThemeProvider theme={theme}>
       <HashRouter>
@@ -71,6 +81,31 @@ export default class App extends React.Component {
 
           return (
             <div>
+
+              <Hidden mdUp implementation="css">
+                <SvgIcon onClick={this.handleNavToggle} style={styles.nav.menu}>
+                  {icons.menu}
+                </SvgIcon>
+              </Hidden>
+
+              <Drawer
+                anchor="right"
+                open={this.state.navOpen}
+                onClose={this.handleNavClose}
+              >
+                {
+                  routes.map ((route, i) =>
+                    <MenuItem
+                      key={i} onClick={(e) => {
+                        this.handleNavClose ()
+                        route.props.onClick (e)
+                      }}
+                    >
+                      {route}
+                    </MenuItem>)
+                }
+              </Drawer>
+
               <Grid container justify="center">
 
                 <Grid item xs={12} md={3}>
