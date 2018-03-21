@@ -31,7 +31,6 @@ const styles = {
     },
     "menu": {
       "position": "fixed",
-      "padding": 20,
       "zIndex": 2,
     },
     "root": {
@@ -53,9 +52,11 @@ class NavMenu extends React.Component {
 
   render = () => (
     <div>
-      <SvgIcon onClick={this.handleNavToggle} style={styles.nav.menu}>
-        {icons.menu}
-      </SvgIcon>
+      <Button onClick={this.handleNavToggle} style={styles.nav.menu}>
+        <SvgIcon>
+          {icons.menu}
+        </SvgIcon>
+      </Button>
 
       <Drawer
         anchor="right"
