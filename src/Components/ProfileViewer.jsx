@@ -37,7 +37,10 @@ export default (props) =>
           <div>Software Engineer</div>
 
         </Grid>
-        <Grid item xs={6} sm={12}>
+        <Grid
+          style={{ "zIndex": 2 }} item xs={6}
+          sm={12}
+        >
 
           <div style={styles.iconsContainer}>
 
