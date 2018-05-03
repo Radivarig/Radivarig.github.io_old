@@ -1,19 +1,9 @@
 import React from "react"
+import dimensions from "react-dimensions"
 
-export default class UnityGuiNodeEditorViewer extends React.Component {
-  state = {
-    "width": undefined,
-  }
-
-  componentDidMount () {
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState ({
-      "width": this.element.getBoundingClientRect ().width,
-    })
-  }
-
+class UnityGuiNodeEditorViewer extends React.Component {
   getDimensions = () => {
-    if (this.state.width === undefined) {
+    if (this.props.containerWidth === undefined) {
       return {
         "width": "100%",
         "height": "100%",
@@ -24,7 +14,7 @@ export default class UnityGuiNodeEditorViewer extends React.Component {
     const webGLWidth = 960
     const webGLHeight = 645
 
-    const width = this.state.width
+    const width = this.props.containerWidth
     const scale = width / webGLWidth
     const height = webGLHeight * scale
 
@@ -37,7 +27,6 @@ export default class UnityGuiNodeEditorViewer extends React.Component {
 
   render = () => {
     const { width, height, scale } = this.getDimensions ()
-    console.log ("render", { width, height, scale })
 
     const style = {
       "display": "block",
@@ -51,7 +40,7 @@ export default class UnityGuiNodeEditorViewer extends React.Component {
     return (
       <div style={{ "margin": "auto", width, height, "transform": `scale${scale}` }}>
         <iframe
-          ref={(ref) => {console.log ("setting ref", { ref }); this.element = ref}}
+          ref={(ref) => {this.element = ref}}
           style={style}
           src='https://radivarig.github.io/GUINodeEditorWebGLDemo/'
         />
@@ -59,3 +48,5 @@ export default class UnityGuiNodeEditorViewer extends React.Component {
     )
   }
 }
+
+export default dimensions () (UnityGuiNodeEditorViewer)
